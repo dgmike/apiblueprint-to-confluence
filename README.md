@@ -1,2 +1,3 @@
-# apiblieprint-to-confluence
-Parses APIBlueprint source code and compiles to Confluence format
+# ApiBlieprint to Confluence
+
+Parses APIBlueprint source code and compiles to Confluence format.
