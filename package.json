@@ -1,0 +1,26 @@
+{
+  "name": "apiblieprint-to-confluence",
+  "version": "1.0.0",
+  "description": "Parses APIBlueprint source code and compiles to Confluence format",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dgmike/apiblieprint-to-confluence.git"
+  },
+  "keywords": [
+    "apiblueprint",
+    "confluence",
+    "parser",
+    "api",
+    "aglio"
+  ],
+  "author": "Michael Granados <michaelgranados@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dgmike/apiblieprint-to-confluence/issues"
+  },
+  "homepage": "https://github.com/dgmike/apiblieprint-to-confluence"
+}
