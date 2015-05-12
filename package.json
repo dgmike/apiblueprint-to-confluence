@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/dgmike/apiblieprint-to-confluence/issues"
   },
-  "homepage": "https://github.com/dgmike/apiblieprint-to-confluence"
+  "homepage": "https://github.com/dgmike/apiblieprint-to-confluence",
+  "dependencies": {
+    "aglio": "^1.18.0"
+  }
 }
