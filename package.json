@@ -2,7 +2,7 @@
   "name": "apiblieprint-to-confluence",
   "version": "1.0.0",
   "description": "Parses APIBlueprint source code and compiles to Confluence format",
-  "main": "index.js",
+  "main": "index.coffee",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/dgmike/apiblieprint-to-confluence",
   "dependencies": {
-    "aglio": "^1.18.0"
+    "aglio": "^1.18.0",
+    "coffee-script": "^1.9.2"
   }
 }
