@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Parses APIBlueprint source code and compiles to Confluence format",
   "main": "index.coffee",
+  "bin": {
+    "api2con": "./index.coffee"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -24,7 +27,8 @@
   },
   "homepage": "https://github.com/dgmike/apiblieprint-to-confluence",
   "dependencies": {
-    "aglio": "^1.18.0",
-    "coffee-script": "^1.9.2"
+    "aglio": "^1.17.1-experimental3",
+    "coffee-script": "^1.9.2",
+    "remarkable": "^1.6.0"
   }
 }
