@@ -1,0 +1,153 @@
+//- != JSON.stringify(api, false, 4)
+
+ac:layout
+  ac:layout-section(ac:type="two_right_sidebar")
+    ac:layout-cell
+      h1 Postman
+
+      div
+        ac:structured-macro(ac:name="excerpt-include")
+          ac:parameter(ac:name="nopanel") true
+          ac:parameter(ac:name="")
+            ac:link
+              ri:page(ri:content-title="Postman")/
+
+      div
+        ac:structured-macro(ac:name="attachments")
+          ac:parameter(ac:name="patterns") *.postman_collection
+          ac:parameter(ac:name="upload") false
+
+      h1= api.name
+
+      div!= markdown(api.description)
+
+      each group in api.resourceGroups
+        h2= group.name
+        hr/
+
+        if group.description
+          div!= markdown(group.description)
+
+        each resource in group.resources
+          each action in resource.actions
+            h3 #{action.method} #{resource.uriTemplate}
+
+            if action.description
+              //- h5 Descrição
+              div!= markdown(action.description)
+
+            if action.parameters && action.parameters.length
+
+              h5 Parâmetros
+
+              table(width="100%")
+                thead: tr
+                  th Nome
+                  th Tipo
+                  th Padrão
+                  th Exemplo
+                  th Obrigatório
+                  th Descrição
+                tbody
+                  each parameter in action.parameters
+                    tr
+                      td= parameter.name
+                      td= parameter.type
+                      td= parameter.default
+                      td= parameter.example
+                      td= parameter.required ? 'sim' : 'não'
+                      td!= markdown(parameter.name)
+
+            if action.body
+              ac:structured-macro(ac:name="code")
+                ac:plain-text-body
+                  | <![CDATA[
+                  != action.body
+                  | ]]>
+
+            if action.examples
+              each example, index in action.examples
+                if index
+                  hr/
+
+                if example.requests && example.requests.length
+                  h5 Requisição
+                  each request in example.requests
+
+                    != markdown(request.description)
+
+                    if request.headers && request.headers.length
+                      ac:structured-macro(ac:name="code")
+                        ac:parameter(ac:name="title") Headers
+                        ac:plain-text-body
+                          | <![CDATA[
+                          each header in request.headers
+                            | #{header.name}: #{header.value}#{"\n"}
+                          | ]]>
+
+                    if request.body
+                      ac:structured-macro(ac:name="code")
+                        ac:parameter(ac:name="title") Body
+                        ac:parameter(ac:name="theme") Eclipse
+                        ac:parameter(ac:name="language") js
+                        ac:plain-text-body
+                          | <![CDATA[
+                          != request.body
+                          | ]]>
+
+                    if request.schema
+                      ac:structured-macro(ac:name="code")
+                        ac:parameter(ac:name="title") JSON Schema
+                        ac:parameter(ac:name="theme") Eclipse
+                        ac:parameter(ac:name="language") js
+                        ac:parameter(ac:name="collapsible") true
+                        ac:plain-text-body
+                          | <![CDATA[
+                          != request.schema
+                          | ]]>
+
+                if example.responses && example.responses.length
+                  h5 Resposta#{example.responses.length > 1 ? 's' : ''}
+                  table(width="100%")
+                    thead: tr
+                      th Código
+                      th Commentário
+                    each response in example.responses
+                      tr
+                        td: b #{response.name}
+                        td
+                          if response.description
+                            != markdown(response.description)
+
+                          if response.headers && response.headers.length
+                            ac:structured-macro(ac:name="code")
+                              ac:parameter(ac:name="title") Headers
+                              ac:plain-text-body
+                                | <![CDATA[
+                                each header in response.headers
+                                  | #{header.name}: #{header.value}#{"\n"}
+                                | ]]>
+
+                          if response.body
+                            ac:structured-macro(ac:name="code")
+                              ac:parameter(ac:name="title") Body
+                              ac:parameter(ac:name="theme") Eclipse
+                              ac:parameter(ac:name="language") js
+                              ac:plain-text-body
+                                | <![CDATA[
+                                != response.body
+                                | ]]>
+                          if response.schema
+                            ac:structured-macro(ac:name="code")
+                              ac:parameter(ac:name="title") JSON Schema
+                              ac:parameter(ac:name="theme") Eclipse
+                              ac:parameter(ac:name="language") js
+                              ac:parameter(ac:name="collapsible") true
+                              ac:plain-text-body
+                                | <![CDATA[
+                                != response.schema
+                                | ]]>
+
+    ac:layout-cell
+      ac:structured-macro(ac:name="toc")
+        ac:parameter(ac:name="maxLevel") 3
