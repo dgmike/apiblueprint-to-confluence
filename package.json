@@ -1,5 +1,5 @@
 {
-  "name": "apiblieprint-to-confluence",
+  "name": "apiblueprint-to-confluence",
   "version": "1.0.0",
   "description": "Parses APIBlueprint source code and compiles to Confluence format",
   "main": "index.coffee",
