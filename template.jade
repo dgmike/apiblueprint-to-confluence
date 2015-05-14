@@ -17,6 +17,18 @@ ac:layout
           ac:parameter(ac:name="patterns") *.postman_collection
           ac:parameter(ac:name="upload") false
 
+      h1 Resumo
+
+      table
+        each group in api.resourceGroups
+          each resource in group.resources
+            each action in resource.actions
+              tr
+                td
+                  ac:structured-macro(ac:name="status")
+                    ac:parameter(ac:name="title")= action.method
+                td= resource.uriTemplate
+
       h1= api.name
 
       div!= markdown(api.description)
